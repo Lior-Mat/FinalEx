@@ -13,33 +13,13 @@
 
         }
 
-        let cart = [
-            {
-                name: "Pich",
-                id: 1,
-                size: 38,
-                imgURL: "https://fdajkngbdfknflgdfgn.com"
-            },
-            {
-                name: "Pich",
-                id: 2,
-                size: 38,
-                imgURL: "https://fdajkngbdfknflgdfgn.com"
-            },
-            {
-                name: "Pich",
-                id: 3,
-                size: 38,
-                imgURL: "https://fdajkngbdfknflgdfgn.com"
-            }
+        // let cart = [
             
-        ];
+        // ];
 
-        function onAddToCart({name: Srting, id: Number, size: Number, imgURL: Srting}) {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("effect").style.transition = ".5s";
-            document.getElementById("effect").style.paddingRight = "0";
-        }
+        // function onAddToCart(item) {
+        //     cart.push(item);
+        // }
 
-        let x = document.querySelectorAll()
+        // let x = document.querySelectorAll()
 

@@ -511,7 +511,7 @@ button:hover::before, button:focus::before {
   opacity: 1;
 }
 
-button::after {
+.wrap button::after {
   content: '';
   width: 30px; height: 30px;
   border-radius: 100%;
