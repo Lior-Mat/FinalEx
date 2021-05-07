@@ -24,6 +24,32 @@ body {
   font-family: fantasy;
 }
 
+
+.color-choose{
+  display:flex;
+  width: 5em;
+  justify-content: space-between;
+}
+
+.first-color{
+  background-color: red;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+}
+.second-color{
+  background-color: black;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+}
+.third-color{
+  background-color: green;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+}
+
 /* .shopping-cart {
   width: 750px;
   height: 423px;
@@ -477,7 +503,10 @@ nav{
   padding-top: 0.7em;
 }
 
-
+.menuSlider a{
+  color:white;
+  text-decoration: none;
+}
 
 .button {
   min-width: 150px;
