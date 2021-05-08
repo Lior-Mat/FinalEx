@@ -15,9 +15,12 @@
     <title>Document</title>
 </head>
 
-<script src="hamburgerMenu.js"></script>
+
 
 <body id="effect">
+
+    <div id="myCartID">
+    </div>
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -34,13 +37,15 @@
             <span class="searchBar">
                 <i class="fa fa-search" aria-hidden="true"></i><input type="text" placeholder="Search..">
             </span>
-            <span onclick="openNav()">
-                <a href="" id="cartCountID"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <span>
+                <i class="fa fa-shopping-cart" aria-hidden="true" id="cartCountID" onclick="openCart()"></i>
                 <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
-                <i class="fa fa-bars" aria-hidden="true"></i>
+                <i class="fa fa-bars" aria-hidden="true" onclick="openNav()"></i>
             </span>
 
         </div>
+
+        
 
 
         <div class="navbar">
@@ -68,14 +73,6 @@
     </header>
     <section class="container">
 
-
-        <!-- left column / shoes image -->
-        <div>
-            <img data-image="black" src="" alt="">
-            <img data-image="red" src="" alt="">
-            <img data-image="blue" src="" alt="">
-        </div>
-
         <div class="right-column">
 
             <!--product description -->
@@ -94,13 +91,13 @@
 
                     <div class="color-choose">
                         
-                        <div class="first-color" id="red">
+                        <div class="first-color" id="red" onclick="onClickSetColor(id)">
                         </div>
 
-                        <div class="second-color" id="black">
+                        <div class="second-color" id="black" onclick="onClickSetColor(id)">
                         </div>
 
-                        <div class="third-color" id="green">
+                        <div class="third-color" id="green" onclick="onClickSetColor(id)">
                         </div>
                         
                     </div>
@@ -132,7 +129,7 @@
             <!-- Product Pricing -->
             <div class="product-price">
                 <span id="productPrice">148$</span>
-                <a href="#" class="cart-btn" id="c-btn" onclick="onAddToCart({name: productName.innerHTML, description: info.innerHTML, color: '', size: shoeSizes.value ,price: productPrice.innerHTML})">Add to cart</a>
+                <a href="#" class="cart-btn" id="c-btn" onclick="onAddToCart({name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: shoeSizes.value ,price: productPrice.innerHTML})">Add to cart</a>
             </div>
         </div>
     </section>
@@ -174,4 +171,6 @@
             <i class="fa fa-instagram" aria-hidden="true"></i>
         </div>
     </footer> 
+
+    <script src="hamburgerMenu.js"></script>
 </body>
