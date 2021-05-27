@@ -23,18 +23,45 @@
 
 
 // Opening & Closing cart functions
-function openCart() {      
-    // myCartDisplay.innerHTML += cart.forEach(item => {
-    // `<div>Product Name: ${item.name}
-    //  Product Color: ${item.color}
-    //  Product Size: ${item.size}
-    //  Product Price: ${item.price}</div>
-    //  -----------------------------` 
-    // }); WE HAVE A PROBLEM TO INJECT AND DISPLAY OUR CART DATA ARRAY IN THE CART
+function openCart() {    
+        
+        refreshCart();
+
+        document.getElementById("myCartOpening").style.width = "30%";
+        document.getElementById("effect").style.paddingRight = "250px";
+        document.getElementById("effect").style.transition = ".5s";
 }
 
 /* Set the width of the side navigation to 0 */
 function closeCart() {
+        document.getElementById("myCartOpening").style.width = "0";
+        document.getElementById("effect").style.transition = ".5s";
+        document.getElementById("effect").style.paddingRight = "0";
+    }
+
+    let totalPrice = 0;
+
+function refreshCart(){
+
+    let display = "";
+        
+        cart.forEach( item => {
+
+            display += `<tr><td> <img src="`+ item.img +`"\></td> <td> `+ item.name +`</td> <td> `+ item.price +` `+ item.currency +`</td></tr>`;
+            console.log(totalPrice);
+        });
+        
+        document.getElementById("myCartOpeningContent").innerHTML = '<table>'+ display +'</table>';  
+}
+
+function getFinalPrice(){
+   let theFinalPrice = document.getElementById("finalPrice");
+//    console.log(theFinalPrice);
+    totalPrice = 0;
+    cart.forEach( item => {
+        totalPrice += parseInt(item.price);
+    });
+   theFinalPrice.innerHTML = "The total price is: " + totalPrice + `$`;
 }
 
 // forEach function
@@ -45,35 +72,35 @@ function closeCart() {
 ////////////////////////////////////////////////////////////////////////////////
         
         // My Fake DataBase
-        let items = [
-            {
-                // id: "1",
-                name:"Nike Air",
-                description:"blalbllblbalab", 
-                color:"red", 
-                size:"42", 
-                price:"150"
-            },
+        // let items = [
+        //     {
+        //         // id: "1",
+        //         name:"Nike Air",
+        //         description:"blalbllblbalab", 
+        //         color:"red", 
+        //         size:"42", 
+        //         price:"150"
+        //     },
 
-            {
-                // id: "2",
-                name:"Nike Air2",
-                description:"blalbllblbalab", 
-                color:"red", 
-                size:"42", 
-                price:"150"
-            },
+        //     {
+        //         // id: "2",
+        //         name:"Nike Air2",
+        //         description:"blalbllblbalab", 
+        //         color:"red", 
+        //         size:"42", 
+        //         price:"150"
+        //     },
 
-            {
-                // id: "3",
-                name:"Nike Air3",
-                description:"blalbllblbalab", 
-                color:"red", 
-                size:"42", 
-                price:"150"
-            }
+        //     {
+        //         // id: "3",
+        //         name:"Nike Air3",
+        //         description:"blalbllblbalab", 
+        //         color:"red", 
+        //         size:"42", 
+        //         price:"150"
+        //     }
             
-        ];
+        // ];
 
 ////////////////////////////////////////////////////////////
 
@@ -95,6 +122,18 @@ function closeCart() {
         }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
+        let saveSize = '';
+
+        function onClickSetSize(mySize){
+            saveSize = mySize;
+        }
+
+        function onClickGetSize(){
+            return saveSize;
+        }
+
+        
+
         
         
         // Adding items in the cart Array & inserting the count next to the cart icon.
@@ -108,5 +147,7 @@ function closeCart() {
             }
             else
             cartCountID.innerHTML =  ' ' + addedObjects;
+            getFinalPrice();
+            refreshCart();
         }
 

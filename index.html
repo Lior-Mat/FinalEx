@@ -69,6 +69,22 @@
         </footer>
     </div>
 
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)"  class="closebtn" onclick="closeNav()">x</a>
+        <a href="#">Log In</a>
+        <a href="Mens.html">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+        <a href="#">Sales</a>
+        <a href="#">Collections</a>
+
+    </div>
+
+    <div id="myCartOpening" class="sidenav">
+        <a href="javascript:void(0)"  class="closebtn" onclick="closeCart()">x</a>
+
+    </div>
+
     
 
 
@@ -82,10 +98,10 @@
             <span class="searchBar">
                 <i class="fa fa-search" aria-hidden="true"></i><input type="text" placeholder="Search..">
             </span>
-            <span onclick="openNav()">
-                <a href=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <span>
+                <span onclick ="openCart()"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                 <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
-                <i class="fa fa-bars" aria-hidden="true"></i>
+                <span onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
             </span>
 
         </div>

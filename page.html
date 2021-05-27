@@ -31,6 +31,14 @@
         <a href="#">Sales</a>
         <a href="#">Collections</a>
     </div>
+
+    <div id="myCartOpening" class="sidenav">
+        <a href="javascript:void(0)"  class="closebtn" onclick="closeCart()">x</a>
+        <section id="myCartOpeningContent"></section>
+        <div id="finalPrice"></div>
+
+    </div>
+
     <header>
         <div class="menuSlider">
 
@@ -38,15 +46,15 @@
                 <i class="fa fa-search" aria-hidden="true"></i><input type="text" placeholder="Search..">
             </span>
             <span>
-                <i class="fa fa-shopping-cart" aria-hidden="true" id="cartCountID" onclick="openCart()"></i>
+                <span onclick ="openCart()"><i class="fa fa-shopping-cart" aria-hidden="true" id="cartCountID"></i></span>
                 <a href=""><i class="fa fa-user" aria-hidden="true"></i></a>
-                <i class="fa fa-bars" aria-hidden="true" onclick="openNav()"></i>
+                <span onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
             </span>
 
         </div>
 
         
-
+        
 
         <div class="navbar">
             <div class="types">
@@ -73,11 +81,16 @@
     </header>
     <section class="container">
 
+        <div class="left-column">
+            <img data-image="black" src="" alt="">
+            <img data-image="red" src=" " alt="">
+            <img id="mainPicture" data-image="blue" class="active" src="myFoot1.jpg" alt="">
+        </div>
         <div class="right-column">
 
             <!--product description -->
             <div class="product-description">
-                <h1>Nike Shoes </h1>
+                <span>Nike Shoes</span>
                 <h2 id="productName">Nike Air</h2>
                 <p id="info">explain about the shoes </p>
             </div>
@@ -110,26 +123,25 @@
             </div>
             <div class="size-choose">
 
-                <select name="shoeSizes" id="shoeSizes">
-                    <option value="40">40</option>
-                    <option value="41">41</option>
-                    <option value="42">42</option>
-                    <option value="43">43</option>
-                    <option value="44">44</option>
-                    <option value="45">45</option>
-                    <option value="46">46</option>
-                    <option value="47">47</option>
-                    <option value="48">48</option>
-                    <option value="49">49</option>
-                    <option value="50">50</option>
-                  </select>
-
-                
+                <div class="sizes">
+                    <button id ="40" onclick="onClickSetSize(id)">40</button>
+                    <button id ="41" onclick="onClickSetSize(id)">41</button>
+                    <button id ="42" onclick="onClickSetSize(id)">42</button>
+                    <button id ="43" onclick="onClickSetSize(id)">43</button>
+                    <button id ="44" onclick="onClickSetSize(id)">44</button>
+                    <button id ="45" onclick="onClickSetSize(id)">45</button>
+                    <button id ="46" onclick="onClickSetSize(id)">46</button>
+                    <button id ="47" onclick="onClickSetSize(id)">47</button>
+                    <button id ="48" onclick="onClickSetSize(id)">48</button>
+                    <button id ="49" onclick="onClickSetSize(id)">49</button>
+                    <button id ="50" onclick="onClickSetSize(id)">50</button>
+                </div>
+                <a href="">Size Chart</a>
             </div>
             <!-- Product Pricing -->
             <div class="product-price">
-                <span id="productPrice">148$</span>
-                <a href="#" class="cart-btn" id="c-btn" onclick="onAddToCart({name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: shoeSizes.value ,price: productPrice.innerHTML})">Add to cart</a>
+                <span id="productPrice">148</span> <span id="currency">$</span>
+                <a href="#" class="cart-btn" id="c-btn" onclick="onAddToCart({name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: onClickGetSize() ,price: productPrice.innerHTML, currency: currency.innerHTML, img: mainPicture.src})">Add to cart</a>
             </div>
         </div>
     </section>
