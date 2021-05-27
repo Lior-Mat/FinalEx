@@ -47,8 +47,8 @@ function refreshCart(){
         
         cart.forEach( item => {
 
-            display += `<tr><td> <img src="`+ item.img +`"\></td> <td> `+ item.name +`</td> <td> `+ item.price +` `+ item.currency +`</td></tr>`;
-            console.log(totalPrice);
+            display += `<tr><td> <img src="`+ item.img +`"\></td> <td> `+ item.name +`</td> <td> `+ item.price +` `+ item.currency +`</td> <td><button onclick="onDeleteItem(id)">X</button></td></tr>`;
+            // console.log(totalPrice);
         });
         
         document.getElementById("myCartOpeningContent").innerHTML = '<table>'+ display +'</table>';  
@@ -61,7 +61,11 @@ function getFinalPrice(){
     cart.forEach( item => {
         totalPrice += parseInt(item.price);
     });
-   theFinalPrice.innerHTML = "The total price is: " + totalPrice + `$`;
+    if(totalPrice == 0){
+        theFinalPrice.innerHTML = 'Too Quiet Over Here...';
+    }
+    else
+        theFinalPrice.innerHTML = "The total price is: " + totalPrice + `$`;
 }
 
 // forEach function
@@ -140,7 +144,7 @@ function getFinalPrice(){
         function onAddToCart(item) {
             addedObjects++;
             cart.push(item);
-            console.log(cart);
+            // console.log(cart);
 
             if(addedObjects >= 9){
                 cartCountID.innerHTML =  '  9+';
@@ -149,5 +153,24 @@ function getFinalPrice(){
             cartCountID.innerHTML =  ' ' + addedObjects;
             getFinalPrice();
             refreshCart();
+            alert("Product Added Succesfully To Cart"); 
         }
+
+        let i = 0;
+        let myTempVar = [];
+
+        function onDeleteItem(index){
+            addedObjects--;
+            if(addedObjects == 0){
+                cartCountID.innerHTML =  ' ';
+            }
+            else{
+                cartCountID.innerHTML =  ' ' + addedObjects;
+            }
+
+            cart.splice(index,1);
+            refreshCart();
+            getFinalPrice();
+        }
+        
 

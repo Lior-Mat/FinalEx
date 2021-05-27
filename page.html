@@ -34,8 +34,9 @@
 
     <div id="myCartOpening" class="sidenav">
         <a href="javascript:void(0)"  class="closebtn" onclick="closeCart()">x</a>
+        <section><h2>My Cart</h2></section>
         <section id="myCartOpeningContent"></section>
-        <div id="finalPrice"></div>
+        <div id="finalPrice">Too Quiet Over Here...</div>
 
     </div>
 
@@ -141,7 +142,7 @@
             <!-- Product Pricing -->
             <div class="product-price">
                 <span id="productPrice">148</span> <span id="currency">$</span>
-                <a href="#" class="cart-btn" id="c-btn" onclick="onAddToCart({name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: onClickGetSize() ,price: productPrice.innerHTML, currency: currency.innerHTML, img: mainPicture.src})">Add to cart</a>
+                <a href="#" class="cart-btn" id="c-btn" onclick="onAddToCart({id: i++, name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: onClickGetSize() ,price: productPrice.innerHTML, currency: currency.innerHTML, img: mainPicture.src})">Add to cart</a>
             </div>
         </div>
     </section>
