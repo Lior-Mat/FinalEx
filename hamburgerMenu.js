@@ -60,6 +60,7 @@ function getFinalPrice(){
     totalPrice = 0;
     cart.forEach( item => {
         totalPrice += parseInt(item.price);
+
     });
     if(totalPrice == 0){
         theFinalPrice.innerHTML = 'Too Quiet Over Here...';
@@ -109,8 +110,8 @@ function getFinalPrice(){
 ////////////////////////////////////////////////////////////
 
 
-
-        let cart = []; // Cart Array
+    
+        
         let addedObjects = 0; // Cart Count
 
 ///////////////// GET AND SET METHODS FOR THE COLOR 
@@ -137,14 +138,24 @@ function getFinalPrice(){
         }
 
         
-
+        let cart = []; // Cart Array
+        let myItemView = '';
         
         
         // Adding items in the cart Array & inserting the count next to the cart icon.
         function onAddToCart(item) {
+            
             addedObjects++;
             cart.push(item);
-            // console.log(cart);
+            // var getShooe= JSON.parse(localStorage.getItem('display'));
+            let item_string= JSON.stringify(item);
+            localStorage.setItem("object", item_string);
+            myItemView = JSON.parse(localStorage.getItem('object'));
+            
+            console.log(item_string);
+            console.log(myItemView);
+
+
 
             if(addedObjects >= 9){
                 cartCountID.innerHTML =  '  9+';
@@ -154,6 +165,10 @@ function getFinalPrice(){
             getFinalPrice();
             refreshCart();
             alert("Product Added Succesfully To Cart"); 
+        }
+
+        for(let i = 0; i <localStorage.length; i++){
+            cart[i] = myItemView;
         }
 
         let i = 0;
