@@ -38,12 +38,10 @@
 
       function refreshCart() {
           let storedItems = JSON.parse(localStorage.getItem("cart"));
-          cart = storedItems;
           let display = "";
 
-          getFinalPrice();
-
           if (storedItems != null) {
+            cart = storedItems;
               storedItems.forEach(item => {
 
                   display += `<tr><td> <img src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + item.price + ` ` + item.currency + `</td> <td><button onclick="onDeleteItem(id)">X</button></td></tr>`;
@@ -55,6 +53,8 @@
           } else {
               myCartCount = "";
           }
+
+          getFinalPrice();
 
 
           if (myCartCount != 0)
@@ -72,9 +72,12 @@
           let theFinalPrice = document.getElementById("finalPrice");
           //    console.log(theFinalPrice);
           totalPrice = 0;
-          cart.forEach(item => {
-              totalPrice += parseInt(item.price);
-          });
+          if(cart != null){
+            cart.forEach(item => {
+                totalPrice += parseInt(item.price);
+            });
+          }
+          
           if (totalPrice == 0) {
               theFinalPrice.innerHTML = 'Too Quiet Over Here...';
           } else
@@ -111,7 +114,6 @@
           } else if (item.size == "") {
               alert("No size has been selected !");
           } else {
-
               cart.push(item);
               localStorage.setItem("cart", JSON.stringify(cart));
               refreshCart();
@@ -121,10 +123,14 @@
       }
 
       let i = 0;
-      let myTempVar = [];
 
       function onDeleteItem(index) {
           cart.splice(index, 1);
+          if(cart.length == 0){
+              localStorage.clear();
+          }
+          else
           localStorage.setItem("cart", JSON.stringify(cart));
+          
           refreshCart();
       }
