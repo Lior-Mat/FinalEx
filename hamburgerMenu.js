@@ -15,22 +15,36 @@
 
       // Hamburger Menu Code
 
+      //   let windowMedia = window.matchMedia("(min-width: 1025px");
+      //   // Opening & Closing cart functions
+      //   function openCart() {
+      //       if (windowMedia.matches) {
+      //           document.getElementById("myCartOpening").style.width = "30%";
+      //           document.getElementById("effect").style.paddingRight = "250px";
+      //           document.getElementById("effect").style.transition = ".5s";
+      //       }
+      //       else{
+      //         document.getElementById("myCartOpening").style.width = "100%";
+      //         document.getElementById("effect").style.paddingRight = "250px";
+      //         document.getElementById("effect").style.transition = ".5s";
+      //       }
+      //   }
 
-      // Opening & Closing cart functions
       function openCart() {
-
-          refreshCart();
-
-          document.getElementById("myCartOpening").style.width = "30%";
-          document.getElementById("effect").style.paddingRight = "250px";
-          document.getElementById("effect").style.transition = ".5s";
+          document.getElementById("myCartOpening").classList.add("open");
       }
 
+
+
       /* Set the width of the side navigation to 0 */
+      //   function closeCart() {
+      //       document.getElementById("myCartOpening").style.width = "0";
+      //       document.getElementById("effect").style.transition = ".5s";
+      //       document.getElementById("effect").style.paddingRight = "0";
+      //   }
+
       function closeCart() {
-          document.getElementById("myCartOpening").style.width = "0";
-          document.getElementById("effect").style.transition = ".5s";
-          document.getElementById("effect").style.paddingRight = "0";
+          document.getElementById("myCartOpening").classList.remove("open");
       }
 
       let totalPrice = 0;
@@ -41,7 +55,7 @@
           let display = "";
 
           if (storedItems != null) {
-            cart = storedItems;
+              cart = storedItems;
               storedItems.forEach(item => {
 
                   display += `<tr><td> <img src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + item.price + ` ` + item.currency + `</td> <td><button onclick="onDeleteItem(id)">X</button></td></tr>`;
@@ -49,7 +63,7 @@
               });
 
               myCartCount = cart.length;
-              console.log(myCartCount);
+              //   console.log(myCartCount);
           } else {
               myCartCount = "";
           }
@@ -72,12 +86,12 @@
           let theFinalPrice = document.getElementById("finalPrice");
           //    console.log(theFinalPrice);
           totalPrice = 0;
-          if(cart != null){
-            cart.forEach(item => {
-                totalPrice += parseInt(item.price);
-            });
+          if (cart != null) {
+              cart.forEach(item => {
+                  totalPrice += parseInt(item.price);
+              });
           }
-          
+
           if (totalPrice == 0) {
               theFinalPrice.innerHTML = 'Too Quiet Over Here...';
           } else
@@ -89,7 +103,7 @@
       let saveColor = ''; // Saving my current clicked color
 
       function onClickSetColor(id) {
-          console.log(id);
+          //   console.log(id);
           saveColor = id; // Saving the color from the get method into the general variable saveColor
       }
 
@@ -126,11 +140,10 @@
 
       function onDeleteItem(index) {
           cart.splice(index, 1);
-          if(cart.length == 0){
+          if (cart.length == 0) {
               localStorage.clear();
-          }
-          else
-          localStorage.setItem("cart", JSON.stringify(cart));
-          
+          } else
+              localStorage.setItem("cart", JSON.stringify(cart));
+
           refreshCart();
       }

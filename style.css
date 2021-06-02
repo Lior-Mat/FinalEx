@@ -38,6 +38,10 @@ body {
   background-color: #284b63;
 }
 
+#myCartOpening.open{
+  width: 30%;
+}
+
 #myCartOpening table {
   width: 100%;
   color: white;
@@ -965,6 +969,10 @@ slider slidect scell {
     display: none;
   }
 
+
+  #myCartOpening.open{
+    width: 100%;
+  }
 
 
 }
