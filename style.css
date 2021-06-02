@@ -468,7 +468,7 @@ h1 {
   text-align: center;
   display: flex;
   flex:none;
-  justify-content: space-around;
+  justify-content: center;
 
 }
 
@@ -478,6 +478,9 @@ h1 {
 
 .trendImages .dougmans_pictures {
   width: 30%;
+  margin-right: 5em;
+  margin-left: 5em;
+
 }
 
 .trendImages .dougmans_pictures2{
