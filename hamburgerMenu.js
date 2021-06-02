@@ -16,12 +16,6 @@
       // Hamburger Menu Code
 
 
-
-      //////////////////////////////////////////////////////////////////////////////// 
-
-
-
-
       // Opening & Closing cart functions
       function openCart() {
 
@@ -71,9 +65,6 @@
           else
               cartCountID.innerHTML = "";
 
-
-          // cartCountID.innerHTML =  `  ${myCartCount}`;
-
           document.getElementById("myCartOpeningContent").innerHTML = '<table>' + display + '</table>';
       }
 
@@ -90,52 +81,8 @@
               theFinalPrice.innerHTML = "The total price is: " + totalPrice + `$`;
       }
 
-      // forEach function
-
-
-
-
-      ////////////////////////////////////////////////////////////////////////////////
-
-      // My Fake DataBase
-      // let items = [
-      //     {
-      //         // id: "1",
-      //         name:"Nike Air",
-      //         description:"blalbllblbalab", 
-      //         color:"red", 
-      //         size:"42", 
-      //         price:"150"
-      //     },
-
-      //     {
-      //         // id: "2",
-      //         name:"Nike Air2",
-      //         description:"blalbllblbalab", 
-      //         color:"red", 
-      //         size:"42", 
-      //         price:"150"
-      //     },
-
-      //     {
-      //         // id: "3",
-      //         name:"Nike Air3",
-      //         description:"blalbllblbalab", 
-      //         color:"red", 
-      //         size:"42", 
-      //         price:"150"
-      //     }
-
-      // ];
-
-      ////////////////////////////////////////////////////////////
-
-
-
       let cart = []; // Cart Array
 
-
-      ///////////////// GET AND SET METHODS FOR THE COLOR 
       let saveColor = ''; // Saving my current clicked color
 
       function onClickSetColor(id) {
@@ -147,7 +94,6 @@
           return saveColor; // Sending back the saved color from the first function
       }
 
-      ///////////////////////////////////////////////////////////////////////////////////////////////
       let saveSize = '';
 
       function onClickSetSize(mySize) {
@@ -158,38 +104,26 @@
           return saveSize;
       }
 
-
-
-
-
       // Adding items in the cart Array & inserting the count next to the cart icon.
       function onAddToCart(item) {
-          cart.push(item);
-          localStorage.setItem("cart", JSON.stringify(cart));
-          // console.log(cart);
+          if (item.color == "") {
+              alert("No color has been selected !");
+          } else if (item.size == "") {
+              alert("No size has been selected !");
+          } else {
 
+              cart.push(item);
+              localStorage.setItem("cart", JSON.stringify(cart));
+              refreshCart();
+              alert("Product Added Succesfully To Cart");
+          }
 
-          // if(addedObjects >= 9){
-          //     cartCountID.innerHTML =  '  9+';
-          // }
-          // else
-          // cartCountID.innerHTML =  ' ' + addedObjects;
-          refreshCart();
-          alert("Product Added Succesfully To Cart");
       }
 
       let i = 0;
       let myTempVar = [];
 
       function onDeleteItem(index) {
-          // addedObjects--;
-          // if(addedObjects == 0){
-          //     cartCountID.innerHTML =  ' ';
-          // }
-          // else{
-          //     cartCountID.innerHTML =  ' ' + addedObjects;
-          // }
-
           cart.splice(index, 1);
           localStorage.setItem("cart", JSON.stringify(cart));
           refreshCart();
