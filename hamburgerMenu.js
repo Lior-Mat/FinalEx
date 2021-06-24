@@ -155,3 +155,34 @@
 
           refreshCart();
       }
+
+      let master = document.getElementById("display-content");
+      let linksMaster = document.querySelectorAll("#flex-Dis a");
+      let displayMaster = document.querySelectorAll("#display-content div");
+
+      function deskOpen(path){
+        
+        displayMaster.forEach(item => {
+            item.style.display = "none";
+        });
+
+        linksMaster.forEach(item => {
+            item.classList.remove("active");
+        });
+
+
+        document.getElementById(path).style.display = "block";
+        document.getElementById(path + "-button").classList.add("active");
+
+        linksMaster.forEach(element => {
+            scrollToTop();
+        });
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 1370,
+          behavior:'smooth'
+        });
+      }
+
