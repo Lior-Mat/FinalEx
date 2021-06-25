@@ -162,7 +162,7 @@
             choosenColor.forEach(item => {
                 item.innerHTML = "";
                 if(item.id == saveColor){
-                    item.innerHTML = "v";
+                    item.innerHTML = "&#10003;";
                 }
                 
           });
