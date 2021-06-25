@@ -179,10 +179,20 @@
         });
       }
 
+      let windowResolution = window.matchMedia("(max-width: 700px)");
+
       function scrollToTop() {
-        window.scrollTo({
-          top: 1370,
-          behavior:'smooth'
-        });
+          if(windowResolution.matches){
+            window.scrollTo({
+                top: 1000,
+                behavior:'smooth'
+              });
+          }
+          else{
+            window.scrollTo({
+                top: 1370,
+                behavior:'smooth'
+              });
+          }
       }
 
