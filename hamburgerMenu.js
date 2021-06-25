@@ -156,6 +156,27 @@
           refreshCart();
       }
 
+      let choosenColor = document.querySelectorAll(".color-choose div");
+
+      function chooseMyColor(id){
+            choosenColor.forEach(item => {
+                item.innerHTML = "";
+                if(item.id == saveColor){
+                    item.innerHTML = "v";
+                }
+                
+          });
+
+        //   choosenColor.forEach(item => {
+        //     item.classList.remove("selectedColor");
+        //   });
+
+
+        //   document.getElementById().classList.add("selectedColor");
+
+        // document.getElementById().style.display = "block";
+      }
+
       let master = document.getElementById("display-content");
       let linksMaster = document.querySelectorAll("#flex-Dis a");
       let displayMaster = document.querySelectorAll("#display-content div");

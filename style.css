@@ -60,6 +60,7 @@ body {
   display: flex;
   width: 5em;
   justify-content: space-between;
+  margin-top: 0.77em;
 }
 
 .first-color {
@@ -67,6 +68,9 @@ body {
   width: 1em;
   height: 1em;
   border-radius: 50%;
+  text-align: center;
+  color:white;
+  padding-bottom: 1.2em;
 }
 
 .second-color {
@@ -74,6 +78,9 @@ body {
   width: 1em;
   height: 1em;
   border-radius: 50%;
+  text-align: center;
+  color:white;
+  padding-bottom: 1.2em;
 }
 
 .third-color {
@@ -81,6 +88,9 @@ body {
   width: 1em;
   height: 1em;
   border-radius: 50%;
+  text-align: center;
+  color:white;
+  padding-bottom: 1.2em;
 }
 
 /* .shopping-cart {
