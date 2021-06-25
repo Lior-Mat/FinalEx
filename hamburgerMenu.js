@@ -160,39 +160,52 @@
       let linksMaster = document.querySelectorAll("#flex-Dis a");
       let displayMaster = document.querySelectorAll("#display-content div");
 
-      function deskOpen(path){
-        
-        displayMaster.forEach(item => {
-            item.style.display = "none";
-        });
+      function deskOpen(path) {
 
-        linksMaster.forEach(item => {
-            item.classList.remove("active");
-        });
+          displayMaster.forEach(item => {
+              item.style.display = "none";
+          });
+
+          linksMaster.forEach(item => {
+              item.classList.remove("active");
+          });
 
 
-        document.getElementById(path).style.display = "block";
-        document.getElementById(path + "-button").classList.add("active");
+          document.getElementById(path).style.display = "block";
+          document.getElementById(path + "-button").classList.add("active");
 
-        linksMaster.forEach(element => {
-            scrollToTop();
-        });
+          linksMaster.forEach(element => {
+              scrollToTop();
+          });
       }
 
       let windowResolution = window.matchMedia("(max-width: 700px)");
 
       function scrollToTop() {
-          if(windowResolution.matches){
-            window.scrollTo({
-                top: 1000,
-                behavior:'smooth'
+          if (windowResolution.matches) {
+              window.scrollTo({
+                  top: 1000,
+                  behavior: 'smooth'
               });
-          }
-          else{
-            window.scrollTo({
-                top: 1370,
-                behavior:'smooth'
+          } else {
+              window.scrollTo({
+                  top: 1370,
+                  behavior: 'smooth'
               });
           }
       }
 
+
+      $(function() {
+        $('#WAButton').floatingWhatsApp({
+          phone: '+972547519653', //WhatsApp Business phone number International format-
+          //Get it with Toky at https://toky.co/en/features/whatsapp.
+          headerTitle: 'Chat with us on WhatsApp!', //Popup Title
+          popupMessage: 'Hello, how can we help you?', //Popup Message
+          showPopup: true, //Enables popup display
+          buttonImage: '<img src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/whatsapp.svg" />', //Button Image
+          //headerColor: 'crimson', //Custom header color
+          //backgroundColor: 'crimson', //Custom background button color
+          position: "right"    
+        });
+      });
