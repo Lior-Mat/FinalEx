@@ -1043,6 +1043,21 @@ slider slidect scell {
     text-align: center;
   }
 
+  #rev-zone{
+    text-align:center;
+  }
+
+  #rev-zone input{
+    margin-bottom: 2em;
+  }
+
+  #rev-zone span:last-child{
+    margin-bottom: 4em;
+  }
+  #rev-zone button{
+    margin-top: 2em;
+  }
+
 
 }
 
