@@ -163,9 +163,20 @@
               item.innerHTML = "";
               if (item.id == saveColor) {
                   item.innerHTML = "&#10003;";
+
+                  if(saveColor == "black"){
+                        document.getElementById("mainPicture").src="more_shoes1.jpg";
+                  }
+                  else if(saveColor == "red"){
+                    document.getElementById("mainPicture").src="myFoot1.jpg";
+                  }
+                  else{
+                    document.getElementById("mainPicture").src="greenShoesNike.jpg";
+                  }
               }
 
           });
+          
 
           //   choosenColor.forEach(item => {
           //     item.classList.remove("selectedColor");
