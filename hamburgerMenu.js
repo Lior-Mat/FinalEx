@@ -158,28 +158,31 @@
 
       let choosenColor = document.querySelectorAll(".color-choose div");
 
-      function chooseMyColor(id){
-            choosenColor.forEach(item => {
-                item.innerHTML = "";
-                if(item.id == saveColor){
-                    item.innerHTML = "&#10003;";
-                }
-                
+      function chooseMyColor(id) {
+          choosenColor.forEach(item => {
+              item.innerHTML = "";
+              if (item.id == saveColor) {
+                  item.innerHTML = "&#10003;";
+              }
+
           });
 
-        //   choosenColor.forEach(item => {
-        //     item.classList.remove("selectedColor");
-        //   });
+          //   choosenColor.forEach(item => {
+          //     item.classList.remove("selectedColor");
+          //   });
 
 
-        //   document.getElementById().classList.add("selectedColor");
+          //   document.getElementById().classList.add("selectedColor");
 
-        // document.getElementById().style.display = "block";
+          // document.getElementById().style.display = "block";
       }
 
       let master = document.getElementById("display-content");
       let linksMaster = document.querySelectorAll("#flex-Dis a");
       let displayMaster = document.querySelectorAll("#display-content div");
+
+
+      let peopleComments = [];
 
       function deskOpen(path) {
 
@@ -198,7 +201,23 @@
           linksMaster.forEach(element => {
               scrollToTop();
           });
+
+          if (path == "rev-zone") {
+              peopleComments = JSON.parse(localStorage.getItem("Comments"));
+
+              if (peopleComments) { // different from null and undifined
+                  spanRevZone.innerHTML = null;
+                  peopleComments.forEach(comment => {
+                    spanRevZone.innerHTML += 
+                    "<span>" + comment.Name + ": " + comment.Comment +  "</span>"
+                  });
+
+
+              }
+          }
       }
+
+      let spanRevZone = document.getElementById("myComments");
 
       let windowResolution = window.matchMedia("(max-width: 700px)");
 
@@ -217,16 +236,45 @@
       }
 
 
-      $(function() {
-        $('#WAButton').floatingWhatsApp({
-          phone: '+972547519653', //WhatsApp Business phone number International format-
-          //Get it with Toky at https://toky.co/en/features/whatsapp.
-          headerTitle: 'Chat with us on WhatsApp!', //Popup Title
-          popupMessage: 'Hello, how can we help you?', //Popup Message
-          showPopup: true, //Enables popup display
-          buttonImage: '<img src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/whatsapp.svg" />', //Button Image
-          //headerColor: 'crimson', //Custom header color
-          //backgroundColor: 'crimson', //Custom background button color
-          position: "right"    
-        });
+      $(function () {
+          $('#WAButton').floatingWhatsApp({
+              phone: '+972547519653', //WhatsApp Business phone number International format-
+              //Get it with Toky at https://toky.co/en/features/whatsapp.
+              headerTitle: 'Chat with us on WhatsApp!', //Popup Title
+              popupMessage: 'Hello, how can we help you?', //Popup Message
+              showPopup: true, //Enables popup display
+              buttonImage: '<img src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/whatsapp.svg" />', //Button Image
+              //headerColor: 'crimson', //Custom header color
+              //backgroundColor: 'crimson', //Custom background button color
+              position: "right"
+          });
       });
+
+
+
+
+
+      function SubmitComment(Comment) {
+          if (!peopleComments) {
+              peopleComments = [];
+          }
+          if(Comment.Name == ""){
+            alert("No Name Has Been Choosen !");
+          }
+          else if(Comment.Comment == ""){
+            alert("No Comment Has Been Inserted !");
+          }
+          else{
+            peopleComments.push(Comment);
+          localStorage.setItem("Comments", JSON.stringify(peopleComments));
+          
+          if (peopleComments) { // different from null and undifined
+            spanRevZone.innerHTML = null;
+            peopleComments.forEach(comment => {
+              spanRevZone.innerHTML += 
+              "<span>" + comment.Name + ": " + comment.Comment +  "</span>"
+            });
+        }
+          }
+          
+      }

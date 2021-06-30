@@ -24,6 +24,26 @@ body {
   font-family: fantasy;
 }
 
+.myForm{
+  text-align:center;
+}
+
+#myComments span{
+  margin-bottom: 2em;
+}
+
+#myComments span{
+  display:block;
+}
+
+#InsertComment{
+  border: solid black 1px;
+}
+
+#InsertName{
+  border: solid black 1px;
+}
+
 #myCartOpening h2 {
   color: white;
   text-align: center;
@@ -271,6 +291,7 @@ input:focus {
 #display-content div:not(:first-child){
   display: none;
 }
+
 
 #disSection #flex-Dis a{
   color: #284b63;

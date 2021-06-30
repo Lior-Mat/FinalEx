@@ -14,15 +14,19 @@
     <script src="jq/jq_slider.js" type="text/javascript"></script>
 
     <title>Document</title>
-    
+
 </head>
 
 <!--Jquery-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!--Floating WhatsApp css-->
-<link rel="stylesheet" href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+<link rel="stylesheet"
+    href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
 <!--Floating WhatsApp javascript-->
-<script type="text/javascript" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js"></script>
+<script type="text/javascript"
+    src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
+</script>
 
 
 <body id="effect" onload="refreshCart()">
@@ -239,10 +243,20 @@
                 eget ipsum ut magna luctus scelerisque sagittis a nisi. Integer facilisis nisl et mi porta vehicula.
                 Proin sodales ut erat ac laoreet. Etiam feugiat ligula non massa commodo molestie. Ut eu feugiat libero.
             </div>
-            <div id="rev-zone">Mauris feugiat pretium sapien, vel ornare odio porta dapibus. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Mauris sollicitudin tincidunt diam, eu vehicula eros mattis quis. Aliquam
-                mollis lobortis hendrerit. Donec ornare est eu mi dictum efficitur. Cras eget ornare nisi. Nulla massa
-                quam, lobortis eu leo et, consectetur mollis tortor.</div>
+            <div id="rev-zone">
+                
+                <span id="myComments">Be The First One To Commment !</span>
+
+                <span class="myForm">
+                    <form>
+                        <label>Name:</label>
+                        <input type="text" id="InsertName" />
+                        <label>Comment:</label>
+                        <input type="text" id="InsertComment"/>
+                        <button type="button" onclick="SubmitComment({Name: InsertName.value,Comment: InsertComment.value})">Add Comment</button>
+                    </form>
+                </span>
+            </div>
         </section>
     </section>
     <div id="WAButton"></div>
