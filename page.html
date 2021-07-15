@@ -202,11 +202,18 @@
                 </div>
                 <a href="">Size Chart</a>
             </div>
+
+            <div class="quantity_product">
+                <div class=size-config>Amount:</div>
+                <i class="fa fa-plus-circle" aria-hidden="true" onclick="AddProductQuantity()"></i>
+                <span id="product-quantity">0</span>
+                <i class="fa fa-minus-circle" aria-hidden="true" onclick="DecreaseProductQuantity()"></i>
+            </div>
             <!-- Product Pricing -->
             <div class="product-price">
                 <span id="productPrice">148</span> <span id="currency">$</span>
                 <a href="#" class="cart-btn" id="c-btn"
-                    onclick="onAddToCart({id: i++, name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: onClickGetSize() ,price: productPrice.innerHTML, currency: currency.innerHTML, img: mainPicture.src})">Add
+                    onclick="onAddToCart({id: i++, name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: onClickGetSize() ,price: productPrice.innerHTML, currency: currency.innerHTML, img: mainPicture.src, quantity: productQ.innerHTML})">Add
                     to cart</a>
             </div>
         </div>
@@ -244,7 +251,7 @@
                 Proin sodales ut erat ac laoreet. Etiam feugiat ligula non massa commodo molestie. Ut eu feugiat libero.
             </div>
             <div id="rev-zone">
-                
+
                 <span id="myComments">Be The First One To Commment !</span>
 
                 <span class="myForm">
@@ -252,8 +259,10 @@
                         <label>Name:</label>
                         <input type="text" id="InsertName" />
                         <label>Comment:</label>
-                        <input type="text" id="InsertComment"/>
-                        <button type="button" onclick="SubmitComment({Name: InsertName.value,Comment: InsertComment.value})">Add Comment</button>
+                        <input type="text" id="InsertComment" />
+                        <button type="button"
+                            onclick="SubmitComment({Name: InsertName.value,Comment: InsertComment.value})">Add
+                            Comment</button>
                     </form>
                 </span>
             </div>

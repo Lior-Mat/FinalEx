@@ -66,7 +66,7 @@
               cart = storedItems;
               storedItems.forEach(item => {
 
-                  display += `<tr><td> <img src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + item.price + ` ` + item.currency + `</td> <td><button onclick="onDeleteItem(id)">X</button></td></tr>`;
+                  display += `<tr><td> <img class="round_image_cart" src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + item.price * item.quantity + ` ` + item.currency + `</td> <td>X `+ item.quantity + ` </td> <td><button onclick="onDeleteItem(`+ cart.indexOf(item) +`)">X</button></td></tr>`;
                   // console.log(totalPrice);
               });
 
@@ -96,7 +96,7 @@
           totalPrice = 0;
           if (cart != null) {
               cart.forEach(item => {
-                  totalPrice += parseInt(item.price);
+                  totalPrice += parseInt(item.price) * item.quantity;
               });
           }
 
@@ -135,7 +135,11 @@
               alert("No color has been selected !");
           } else if (item.size == "") {
               alert("No size has been selected !");
-          } else {
+          } 
+          else if(item.quantity == 0){
+            alert("Please choose quantity");
+          }
+              else {
               cart.push(item);
               localStorage.setItem("cart", JSON.stringify(cart));
               refreshCart();
@@ -147,7 +151,7 @@
       let i = 0;
 
       function onDeleteItem(index) {
-          cart.splice(index, 1);
+          cart.splice(index,1);
           if (cart.length == 0) {
               localStorage.clear();
           } else
@@ -288,4 +292,18 @@
         }
           }
           
+      }
+
+      let productQ = document.getElementById("product-quantity");
+
+      function AddProductQuantity(){
+        productQ.innerHTML = parseInt(productQ.innerHTML) + 1 ;
+      }
+
+      function DecreaseProductQuantity(){
+          if(parseInt(productQ.innerHTML) <= 0){
+              productQ.innerHTML = 0;
+          }
+          else
+          productQ.innerHTML = parseInt(productQ.innerHTML) - 1;
       }
