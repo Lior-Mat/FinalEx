@@ -1028,6 +1028,16 @@ slider slidect scell {
     display: none;
   } */
 
+  .paddingTop {
+    padding-top: 0;
+  }
+
+  .trendImages .dougmans_pictures{
+    margin-right:0;
+    margin-left:0;
+  }
+  
+
   .other_links{
     display:none;
   }
