@@ -58,6 +58,32 @@
       let totalPrice = 0;
       let myCartCount = 0;
 
+      function ModifyAddCart(indexOfItem) {
+          cart[indexOfItem].quantity = parseInt(cart[indexOfItem].quantity) + 1;
+          cart.splice(indexOfItem, 1, cart[indexOfItem]);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          refreshCart();
+
+      }
+
+      function ModifyDecreaseCart(indexOfItem) {
+          if (cart[indexOfItem].quantity <= 1) {
+              cart.splice(indexOfItem, 1);
+              localStorage.setItem("cart", JSON.stringify(cart));
+          } else {
+              cart[indexOfItem].quantity = parseInt(cart[indexOfItem].quantity) + -1;
+              cart.splice(indexOfItem, 1, cart[indexOfItem]);
+              localStorage.setItem("cart", JSON.stringify(cart));
+          }
+
+          // if(cart.length == 0){
+          //     localStorage.clear();
+          // }
+
+          refreshCart();
+
+      }
+
       function refreshCart() {
           let storedItems = JSON.parse(localStorage.getItem("cart"));
           let display = "";
@@ -66,7 +92,7 @@
               cart = storedItems;
               storedItems.forEach(item => {
 
-                  display += `<tr><td> <img class="round_image_cart" src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + item.price * item.quantity + ` ` + item.currency + `</td> <td>X `+ item.quantity + ` </td> <td><button onclick="onDeleteItem(`+ cart.indexOf(item) +`)">X</button></td></tr>`;
+                  display += `<tr><td> <img class="round_image_cart" src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + priceNikeAir * item.quantity + ` ` + item.currency + `</td> <td><i class="fa fa-plus-circle" aria-hidden="true" onclick="ModifyAddCart(` + cart.indexOf(item) + `)"></i> ` + item.quantity + ` <i class="fa fa-minus-circle" aria-hidden="true" onclick="ModifyDecreaseCart(` + cart.indexOf(item) + `)"></i> </td> <td>Size: ` + item.size + `</td> <td><button onclick="onDeleteItem(` + cart.indexOf(item) + `)">X</button></td></tr>`;
                   // console.log(totalPrice);
               });
 
@@ -89,14 +115,14 @@
 
           document.getElementById("myCartOpeningContent").innerHTML = '<table>' + display + '</table>';
       }
-
+      const priceNikeAir = 148;
       function getFinalPrice() {
           let theFinalPrice = document.getElementById("finalPrice");
           //    console.log(theFinalPrice);
           totalPrice = 0;
           if (cart != null) {
               cart.forEach(item => {
-                  totalPrice += parseInt(item.price) * item.quantity;
+                  totalPrice += priceNikeAir * item.quantity;
               });
           }
 
@@ -129,21 +155,40 @@
           return saveSize;
       }
 
+
+      let contains = false;
       // Adding items in the cart Array & inserting the count next to the cart icon.
       function onAddToCart(item) {
           if (item.color == "") {
               alert("No color has been selected !");
           } else if (item.size == "") {
               alert("No size has been selected !");
-          } 
-          else if(item.quantity == 0){
-            alert("Please choose quantity");
-          }
-              else {
-              cart.push(item);
-              localStorage.setItem("cart", JSON.stringify(cart));
+          } else if (item.quantity == 0) {
+              alert("Please choose quantity");
+          } else {
+
+              if (cart.length == 0 || cart == undefined) {
+                  cart.push(item);
+                  localStorage.setItem("cart", JSON.stringify(cart));
+                  alert("Product Added Succesfully To Cart");
+              } else {
+
+                  cart.forEach(cartItem => {
+                      if (cartItem.name == item.name && cartItem.size == item.size && cartItem.color == item.color) {
+                          cartItem.quantity = parseInt(cartItem.quantity) + parseInt(item.quantity);
+                          localStorage.setItem("cart", JSON.stringify(cart));
+                          contains = true;
+                      }
+                  });
+                  if (!contains) {
+                      cart.push(item);
+                      localStorage.setItem("cart", JSON.stringify(cart));
+                      alert("Product Added Succesfully To Cart");
+                  }
+
+                  contains = false;
+              }
               refreshCart();
-              alert("Product Added Succesfully To Cart");
           }
 
       }
@@ -151,7 +196,7 @@
       let i = 0;
 
       function onDeleteItem(index) {
-          cart.splice(index,1);
+          cart.splice(index, 1);
           if (cart.length == 0) {
               localStorage.clear();
           } else
@@ -159,6 +204,7 @@
 
           refreshCart();
       }
+
 
       let choosenColor = document.querySelectorAll(".color-choose div");
 
@@ -168,19 +214,17 @@
               if (item.id == saveColor) {
                   item.innerHTML = "&#10003;";
 
-                  if(saveColor == "black"){
-                        document.getElementById("mainPicture").src="more_shoes1.jpg";
-                  }
-                  else if(saveColor == "red"){
-                    document.getElementById("mainPicture").src="myFoot1.jpg";
-                  }
-                  else{
-                    document.getElementById("mainPicture").src="greenShoesNike.jpg";
+                  if (saveColor == "black") {
+                      document.getElementById("mainPicture").src = "more_shoes1.jpg";
+                  } else if (saveColor == "red") {
+                      document.getElementById("mainPicture").src = "myFoot1.jpg";
+                  } else {
+                      document.getElementById("mainPicture").src = "greenShoesNike.jpg";
                   }
               }
 
           });
-          
+
 
           //   choosenColor.forEach(item => {
           //     item.classList.remove("selectedColor");
@@ -223,8 +267,8 @@
               if (peopleComments) { // different from null and undifined
                   spanRevZone.innerHTML = null;
                   peopleComments.forEach(comment => {
-                    spanRevZone.innerHTML += 
-                    "<span>" + comment.Name + ": " + comment.Comment +  "</span>"
+                      spanRevZone.innerHTML +=
+                          "<span>" + comment.Name + ": " + comment.Comment + "</span>"
                   });
 
 
@@ -273,37 +317,41 @@
           if (!peopleComments) {
               peopleComments = [];
           }
-          if(Comment.Name == ""){
-            alert("No Name Has Been Choosen !");
-          }
-          else if(Comment.Comment == ""){
-            alert("No Comment Has Been Inserted !");
-          }
-          else{
-            peopleComments.push(Comment);
-          localStorage.setItem("Comments", JSON.stringify(peopleComments));
-          
-          if (peopleComments) { // different from null and undifined
-            spanRevZone.innerHTML = null;
-            peopleComments.forEach(comment => {
-              spanRevZone.innerHTML += 
-              "<span>" + comment.Name + ": " + comment.Comment +  "</span>"
-            });
-        }
-          }
-          
-      }
+          if (Comment.Name == "") {
+              alert("No Name Has Been Choosen !");
+          } else if (Comment.Comment == "") {
+              alert("No Comment Has Been Inserted !");
+          } else {
+              peopleComments.push(Comment);
+              localStorage.setItem("Comments", JSON.stringify(peopleComments));
 
+              if (peopleComments) { // different from null and undifined
+                  spanRevZone.innerHTML = null;
+                  peopleComments.forEach(comment => {
+                      spanRevZone.innerHTML +=
+                          "<span>" + comment.Name + ": " + comment.Comment + "</span>"
+                  });
+              }
+          }
+
+      }
       let productQ = document.getElementById("product-quantity");
+      let displayedProductPage = document.getElementById("productPrice");
+    //   let metaDataPriceValue = document.getElementById("productPrice").getAttribute("meta-value");
 
-      function AddProductQuantity(){
-        productQ.innerHTML = parseInt(productQ.innerHTML) + 1 ;
+      function AddProductQuantity() {
+          productQ.innerHTML = parseInt(productQ.innerHTML) + 1;
+          displayedProductPage.innerHTML = parseInt(productQ.innerHTML) * parseInt(priceNikeAir);
+
       }
 
-      function DecreaseProductQuantity(){
-          if(parseInt(productQ.innerHTML) <= 0){
+      function DecreaseProductQuantity() {
+          if (parseInt(productQ.innerHTML) <= 0) {
               productQ.innerHTML = 0;
-          }
-          else
-          productQ.innerHTML = parseInt(productQ.innerHTML) - 1;
+          } else
+              productQ.innerHTML = parseInt(productQ.innerHTML) - 1;
+
+              displayedProductPage.innerHTML = parseInt(productQ.innerHTML) * parseInt(priceNikeAir);
+
+
       }
