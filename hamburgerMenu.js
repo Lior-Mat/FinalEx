@@ -83,6 +83,31 @@
           refreshCart();
 
       }
+
+      function displayMyTableCartPage(){
+          let storedItems = JSON.parse(localStorage.getItem("cart"));
+          let display = "";
+
+          if (storedItems != null) {
+            cart = storedItems;
+            storedItems.forEach(item => {
+        
+                display += `<li class="table-header"> 
+                <div class="col col-1" data-label="Job Id"> ` + item.name +`  </div>
+                <div class="col col-2" data-label="Job Id">`+  item.quantity +`</div>
+                <div class="col col-3" data-label="Job Id">`+ item.price * item.quantity + ` ` + item.currency +`</div>
+                <div class="col col-4" data-label="Job Id">`+ item.size +`</div> </li>`;
+            });
+          }
+
+          document.getElementById("myTable").innerHTML = '<ul class="responsive-table">' + `<li class="table-header">
+          <div class="col col-1">Product Name</div>
+          <div class="col col-2">Product Quantity</div>
+          <div class="col col-3">Product Price</div>
+          <div class="col col-4">Product Size</div>
+          </li> ` + display + '</ul>';
+      }
+      
       function refreshCart() {
           let storedItems = JSON.parse(localStorage.getItem("cart"));
           let display = "";
@@ -113,6 +138,7 @@
               cartCountID.innerHTML = "";
 
           document.getElementById("myCartOpeningContent").innerHTML = '<table>' + display + '</table>';
+          displayMyTableCartPage();
       }
       function getFinalPrice() {
           let theFinalPrice = document.getElementById("finalPrice");
