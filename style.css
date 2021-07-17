@@ -55,6 +55,10 @@ ul{
   flex-basis: 25%;
 }
 
+.responsive-table .col-4 button{
+  margin-left: 2em;
+}
+
 @media all and (max-width: 767px) {
   .table-header {
     display: none;

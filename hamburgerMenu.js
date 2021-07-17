@@ -93,10 +93,10 @@
             storedItems.forEach(item => {
         
                 display += `<li class="table-header"> 
-                <div class="col col-1" data-label="Job Id"> ` + item.name +`  </div>
-                <div class="col col-2" data-label="Job Id">`+  item.quantity +`</div>
-                <div class="col col-3" data-label="Job Id">`+ item.price * item.quantity + ` ` + item.currency +`</div>
-                <div class="col col-4" data-label="Job Id">`+ item.size +`</div> </li>`;
+                <div class="col col-1"> ` + item.name +`  </div>
+                <div class="col col-2">`+  item.quantity +`</div>
+                <div class="col col-3">`+ item.price * item.quantity + ` ` + item.currency +`</div>
+                <div class="col col-4">`+ item.size +` <button onclick="onDeleteItem(` + cart.indexOf(item) + `)">X</button> </div> </li>`;
             });
           }
 
