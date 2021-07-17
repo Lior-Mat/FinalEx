@@ -206,14 +206,18 @@
             <div class="quantity_product">
                 <div class=size-config>Amount:</div>
                 <i class="fa fa-plus-circle" aria-hidden="true" onclick="AddProductQuantity()"></i>
-                <span id="product-quantity">0</span>
+                <span id="product-quantity">1</span>
                 <i class="fa fa-minus-circle" aria-hidden="true" onclick="DecreaseProductQuantity()"></i>
+            </div>
+
+            <div class="original_price">
+                Price: <span id="original_price_number">148</span> <span>$</span>
             </div>
             <!-- Product Pricing -->
             <div class="product-price">
                 <span id="productPrice" meta-value="148">148</span> <span id="currency">$</span>
                 <a href="#" class="cart-btn" id="c-btn"
-                    onclick="onAddToCart({ name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: onClickGetSize() ,price: productPrice.innerHTML, currency: currency.innerHTML, img: mainPicture.src, quantity: parseInt(productQ.innerHTML)})">Add
+                    onclick="onAddToCart({ name: productName.innerHTML, description: info.innerHTML, color: onClickGetColor(), size: onClickGetSize() ,price: original_price_number.innerHTML, currency: currency.innerHTML, img: mainPicture.src, quantity: parseInt(productQ.innerHTML)})">Add
                     to cart</a>
             </div>
         </div>

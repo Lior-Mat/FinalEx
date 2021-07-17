@@ -24,6 +24,9 @@ body {
   font-family: fantasy;
 }
 
+.original_price{
+  margin-bottom: 1.77em;
+}
 
 section{
   animation: transitionIn 0.75s;
@@ -634,6 +637,10 @@ nav {
   text-decoration: none;
 }
 
+/* .widthMyButton{
+  width: 10em;
+  text-align: center;
+} */
 .button {
   min-width: 150px;
   min-height: 40px;

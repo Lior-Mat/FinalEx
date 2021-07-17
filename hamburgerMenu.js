@@ -83,7 +83,6 @@
           refreshCart();
 
       }
-
       function refreshCart() {
           let storedItems = JSON.parse(localStorage.getItem("cart"));
           let display = "";
@@ -92,7 +91,7 @@
               cart = storedItems;
               storedItems.forEach(item => {
 
-                  display += `<tr><td> <img class="round_image_cart" src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + priceNikeAir * item.quantity + ` ` + item.currency + `</td> <td><i class="fa fa-plus-circle" aria-hidden="true" onclick="ModifyAddCart(` + cart.indexOf(item) + `)"></i> ` + item.quantity + ` <i class="fa fa-minus-circle" aria-hidden="true" onclick="ModifyDecreaseCart(` + cart.indexOf(item) + `)"></i> </td> <td>Size: ` + item.size + `</td> <td><button onclick="onDeleteItem(` + cart.indexOf(item) + `)">X</button></td></tr>`;
+                  display += `<tr><td> <img class="round_image_cart" src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + item.price * item.quantity + ` ` + item.currency + `</td> <td><i class="fa fa-plus-circle" aria-hidden="true" onclick="ModifyAddCart(` + cart.indexOf(item) + `)"></i> ` + item.quantity + ` <i class="fa fa-minus-circle" aria-hidden="true" onclick="ModifyDecreaseCart(` + cart.indexOf(item) + `)"></i> </td> <td>Size: ` + item.size + `</td> <td><button onclick="onDeleteItem(` + cart.indexOf(item) + `)">X</button></td></tr>`;
                   // console.log(totalPrice);
               });
 
@@ -115,14 +114,13 @@
 
           document.getElementById("myCartOpeningContent").innerHTML = '<table>' + display + '</table>';
       }
-      const priceNikeAir = 148;
       function getFinalPrice() {
           let theFinalPrice = document.getElementById("finalPrice");
           //    console.log(theFinalPrice);
           totalPrice = 0;
           if (cart != null) {
               cart.forEach(item => {
-                  totalPrice += priceNikeAir * item.quantity;
+                  totalPrice += item.price * item.quantity;
               });
           }
 
@@ -337,21 +335,20 @@
       }
       let productQ = document.getElementById("product-quantity");
       let displayedProductPage = document.getElementById("productPrice");
+      let myOriginalPriceProduct = document.getElementById("original_price_number");
     //   let metaDataPriceValue = document.getElementById("productPrice").getAttribute("meta-value");
 
       function AddProductQuantity() {
           productQ.innerHTML = parseInt(productQ.innerHTML) + 1;
-          displayedProductPage.innerHTML = parseInt(productQ.innerHTML) * parseInt(priceNikeAir);
+          displayedProductPage.innerHTML = parseInt(productQ.innerHTML) * parseInt(myOriginalPriceProduct.innerHTML);
 
       }
 
       function DecreaseProductQuantity() {
-          if (parseInt(productQ.innerHTML) <= 0) {
-              productQ.innerHTML = 0;
+          if (parseInt(productQ.innerHTML) <= 1) {
+              productQ.innerHTML = 1;
           } else
               productQ.innerHTML = parseInt(productQ.innerHTML) - 1;
 
-              displayedProductPage.innerHTML = parseInt(productQ.innerHTML) * parseInt(priceNikeAir);
-
-
+              displayedProductPage.innerHTML = parseInt(productQ.innerHTML) * parseInt(myOriginalPriceProduct.innerHTML);
       }
