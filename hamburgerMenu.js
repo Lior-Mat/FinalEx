@@ -106,6 +106,8 @@
           <div class="col col-3">Product Price</div>
           <div class="col col-4">Product Size</div>
           </li> ` + display + '</ul>';
+
+          document.getElementById("finalPriceCheckOut").innerHTML = "The total price is: " + totalPrice + `$`;
       }
       
       function refreshCart() {
@@ -129,6 +131,7 @@
           getFinalPrice();
 
 
+
           if (myCartCount != 0)
               if (myCartCount > 9)
                   cartCountID.innerHTML = ` 9+`;
@@ -140,6 +143,8 @@
           document.getElementById("myCartOpeningContent").innerHTML = '<table>' + display + '</table>';
           displayMyTableCartPage();
       }
+
+      
       function getFinalPrice() {
           let theFinalPrice = document.getElementById("finalPrice");
           //    console.log(theFinalPrice);
@@ -154,7 +159,10 @@
               theFinalPrice.innerHTML = 'Too Quiet Over Here...';
           } else
               theFinalPrice.innerHTML = "The total price is: " + totalPrice + `$`;
+
       }
+
+      
 
       let cart = []; // Cart Array
 
