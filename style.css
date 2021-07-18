@@ -20,6 +20,29 @@
   text-align:center;
 }
 
+.circular{
+  border-radius: 100%;
+  margin:0 0.33em;
+  font-size:0.88em;
+}
+
+.removeProduct i{
+  color:black;
+  font-size:1em;
+}
+
+.removeProduct{
+  display:inline-flex;
+  flex:none;
+  justify-content: center;
+  align-items: center;
+  width:2em;
+  height:2em;
+  background:white;
+  color:black;
+
+}
+
 ul{
   padding: 0px;
 }
@@ -36,6 +59,7 @@ ul{
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
+    color:white;
 }
 
 .responsive-table .table-row {
@@ -173,6 +197,10 @@ section{
 #myCartOpening table {
   width: 100%;
   color: white;
+}
+
+#myCartOpening table td{
+  text-align:center;
 }
 
 #myCartOpeningContent {
@@ -593,14 +621,11 @@ input[type=text] {
 
 /* The navigation menu links */
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  /* padding: 8px 8px 8px 32px; */
   text-decoration: none;
-  font-size: 25px;
   color: white;
-  display: block;
   transition: 0.3s;
   text-align: center;
-  margin-bottom: 0.7em;
 }
 
 .sidenav .left_side a {
@@ -728,6 +753,7 @@ nav {
   text-align: center;
 } */
 .button {
+  display:inline-block;
   min-width: 150px;
   min-height: 40px;
   font-family: 'Nunito', sans-serif;
@@ -740,13 +766,18 @@ nav {
   background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
   border: none;
   border-radius: 1000px;
-  box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+  box-shadow: 0 0.5em 0.66em rgba(79, 209, 197, .64);
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   outline: none;
   position: relative;
-  padding: 10px;
+  padding: 0.77em 2.77em;
   margin-top: 2em;
+}
+
+.checkOutHamburger{
+  text-align:center;
+  font-size: 1.22em;
 }
 
 button::before {
