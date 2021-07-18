@@ -64,7 +64,16 @@ ul{
     align-items:center;
     justify-content: center;
 }
+.mySideNavMenu{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em; 
+}
 
+.mySideNavMenu div{
+  padding: 0.77em;
+}
 .responsive-table .table-row {
   background-color: #ffffff;
   box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
@@ -1202,6 +1211,15 @@ slider slidect scell {
   .sidenav footer {
     display: none;
   }
+
+  /* #mySideNav .mySideNavMenu{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    align-content: center;
+    text-align:center;
+    
+  } */
 
   .container {
     display: flex;

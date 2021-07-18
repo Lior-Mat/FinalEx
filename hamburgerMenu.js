@@ -94,7 +94,7 @@
         
                 display += `<li class="table-header"> 
                 <div class="col col-1"> ` + item.name +`  </div>
-                <div class="col col-2">`+  item.quantity +`</div>
+                <div class="col col-2">` + ` <a href="javascript:" class="removeProduct circular" onclick="ModifyAddCart( `+ cart.indexOf(item) +` )"><i class="fa fa-plus" aria-hidden="true"></i></a> ` +  item.quantity +` <a href="javascript:" class="removeProduct circular" onclick="ModifyDecreaseCart( `+ cart.indexOf(item) +` )"><i class="fa fa-minus" aria-hidden="true"></i></a> </div>
                 <div class="col col-3">`+ item.price * item.quantity + ` ` + item.currency +`</div>
                 <div class="col col-4">`+ item.size +` <a class="removeProduct circular" onclick="onDeleteItem(` + cart.indexOf(item) + `)"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </li>`;
             });
@@ -118,7 +118,11 @@
               cart = storedItems;
               storedItems.forEach(item => {
 
-                  display += `<tr><td> <img class="round_image_cart" src="` + item.img + `"\></td> <td> ` + item.name + `</td> <td> ` + item.price * item.quantity + ` ` + item.currency + `</td> <td><a href="javascript:" class="removeProduct circular" onclick="ModifyAddCart( `+ cart.indexOf(item) +` )"><i class="fa fa-plus" aria-hidden="true"></i></a> ` + item.quantity + ` <a href="javascript:" class="removeProduct circular" onclick="ModifyDecreaseCart( `+ cart.indexOf(item) +` )"><i class="fa fa-minus" aria-hidden="true"></i></a> </td> <td>Size: ` + item.size + `</td> <td><a href="javascript:" class="removeProduct" onclick="onDeleteItem(` + cart.indexOf(item) + `)"><i class="fa fa-times" aria-hidden="true"></i></a></td></tr>`;
+                  display += `<tr>
+                  <td> <img class="round_image_cart" src="` + item.img + `"\></td>
+                <td> ` + item.name + `</td> <td> ` + item.price * item.quantity + ` ` + item.currency + `</td> 
+                <td><a href="javascript:" class="removeProduct circular" onclick="ModifyAddCart( `+ cart.indexOf(item) +` )"><i class="fa fa-plus" aria-hidden="true"></i></a> ` + item.quantity + ` <a href="javascript:" class="removeProduct circular" onclick="ModifyDecreaseCart( `+ cart.indexOf(item) +` )"><i class="fa fa-minus" aria-hidden="true"></i></a> </td>
+                <td>Size: ` + item.size + `</td> <td><a href="javascript:" class="removeProduct" onclick="onDeleteItem(` + cart.indexOf(item) + `)"><i class="fa fa-times" aria-hidden="true"></i></a></td></tr>`;
                   // console.log(totalPrice);
               });
 
