@@ -96,7 +96,7 @@
                 <div class="col col-1"> ` + item.name +`  </div>
                 <div class="col col-2">`+  item.quantity +`</div>
                 <div class="col col-3">`+ item.price * item.quantity + ` ` + item.currency +`</div>
-                <div class="col col-4">`+ item.size +` <button onclick="onDeleteItem(` + cart.indexOf(item) + `)">X</button> </div> </li>`;
+                <div class="col col-4">`+ item.size +` <a class="removeProduct circular" onclick="onDeleteItem(` + cart.indexOf(item) + `)"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </li>`;
             });
           }
 
